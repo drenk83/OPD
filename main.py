@@ -23,21 +23,6 @@ for index in data:
 
 bot = telebot.TeleBot('6235533628:AAFh0CL3s52ToNoSQdrMMj2T68vjjfW4HYY') #Сюда надо вставить короч хуйню (токен)
 
-def pars_string(mesg):
-    mesg = mesg.lower()
-    lst = []
-    st = ''
-    for sym in mesg:
-        if sym.isalpha():
-            st += sym
-        else:
-            lst.append(st)
-            st = ''
-    for i in lst:
-        if i == '':
-            lst.remove('')
-    return lst
-
 @bot.message_handler(content_types=["text"])
 def any_msg(message):
     helper = difflib.get_close_matches(message.text.lower(), voprosi, n=1, cutoff=0.4)
@@ -47,10 +32,10 @@ def any_msg(message):
         msg = str(helper[0])
         print(msg)
         indx = voprosi.index(msg)
-        print(indx)
+        #print(indx)
 
     if msg in voprosi:
-        print(message, '------------')
+        print(message.text, '------------')
         bot.send_message(message.chat.id, str(otveti[indx]))
     else:
         print(message.text, '- прекол не понят')
