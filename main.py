@@ -21,10 +21,6 @@ for index in data:
 for index in data:
     otveti.append(index[2])
 
-#Словарь
-# data = {i[1]: i[2] for i in data}
-# print(data)
-
 bot = telebot.TeleBot('6235533628:AAFh0CL3s52ToNoSQdrMMj2T68vjjfW4HYY') #Сюда надо вставить короч хуйню (токен)
 
 def pars_string(mesg):
@@ -44,11 +40,8 @@ def pars_string(mesg):
 
 @bot.message_handler(content_types=["text"])
 def any_msg(message):
-    #message = message.text
-    #message = message.lower
-    helper = difflib.get_close_matches(message, voprosi, n=1, cutoff=0.4)
-
-    #helper = ['system-1']
+    helper = difflib.get_close_matches(message.text.lower(), voprosi, n=1, cutoff=0.4)
+    msg = 'Меня нет'
 
     if helper != []:
         msg = str(helper[0])
