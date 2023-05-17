@@ -28,7 +28,7 @@ for index in data:
 for index in data:
     flags.append(index[3])
 
-bot = telebot.TeleBot('6235533628:AAFh0CL3s52ToNoSQdrMMj2T68vjjfW4HYY') #Сюда надо вставить короч хуйню (токен)
+bot = telebot.TeleBot('') #Сюда надо вставить короч хуйню (токен)
 
 @bot.message_handler(content_types=["text"])
 def any_msg(message):
